@@ -46,7 +46,7 @@ int main() {
 
 
 
-	if(myrank != 0){
+	if(myrank != 0){	// processor rank 1-n will do calculations
 	
 	MPI_Send(&pi, 1, MPI_DOUBLE , 0, 0, MPI_COMM_WORLD);
 	}
@@ -61,7 +61,7 @@ int main() {
 	}
 
 
-	if(myrank == 0){
+	if(myrank == 0){	//processor rank 0 will sum up values
 
 	printf("PI is %.20f\n",totalpi);
 	printf("elapsed time = %llu nanoseconds\n", (long long unsigned int) diff);
@@ -69,12 +69,6 @@ int main() {
 
 
 	}
-
-
-
-
-
-
 
         
 	MPI_Finalize(); // no more mpi
